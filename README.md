@@ -23,4 +23,33 @@
 docker run -d --name diglett -p 8080:8080 emokid327/diglett:latest
 ```
 
+# Usage
+#### Check port validity
+<code>POST /check</code> Check if port is open or closed on specific IP Address</summary>
+
+#### Body
+```json
+    {
+        address: "1.1.1.1",
+        port: "80",
+    }
+```
+
+
+#### Responses
+
+| http code     | content-type                      | response                                                            |
+|---------------|-----------------------------------|---------------------------------------------------------------------|
+| `200`         | `application/json`                | `{"message":"port 80 open on 1.1.1.1"}`                                             |
+| `400`         | `application/json`                | `{"message":"invalid payload"}`                                     |
+| `406`         | `application/json`                | `{"message":"65536 is not a valid port/IP address"}`                |
+
+#### Example cURL
+
+```shell
+curl -X POST -H "Content-Type: application/json" --data '{"address":"1.1.1.1", "port": "80"}' http://localhost:8080/check
+```
+
+
+
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/songlim)
