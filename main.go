@@ -53,9 +53,9 @@ func checkPortHandler(c *gin.Context) {
 
 	err := tcpCheck(record.Address, record.Port)
 	if err != nil {
-		c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("%v closed", record.Port)})
+		c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("port %v closed on %v", record.Port, record.Address)})
 	} else {
-		c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("%v open", record.Port)})
+		c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("port %v open on %v", record.Port, record.Address)})
 	}
 }
 
