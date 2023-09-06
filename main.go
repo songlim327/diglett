@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,6 +23,7 @@ func main() {
 	// middleware
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	r.Use(cors.Default())
 
 	r.POST("/check", checkPortHandler)
 
