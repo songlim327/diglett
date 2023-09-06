@@ -30,8 +30,8 @@ docker run -d --name diglett -p 8080:8080 emokid327/diglett:latest
 #### Body
 ```json
     {
-        address: "1.1.1.1",
-        port: "80",
+        "address": "1.1.1.1",
+        "port": "80",
     }
 ```
 
