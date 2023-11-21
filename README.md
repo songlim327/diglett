@@ -10,7 +10,7 @@
 ![Go][go-badge] ![Version][version-badge]
 
 [go-badge]: https://img.shields.io/badge/Golang-1.20-blue
-[version-badge]: https://img.shields.io/badge/release-1.0.0-powderblue
+[version-badge]: https://img.shields.io/badge/release-1.1.0-powderblue
 
 </div>
 
@@ -24,8 +24,8 @@ docker run -d --name diglett -p 8080:8080 emokid327/diglett:latest
 ```
 
 # Usage
-#### Check port validity
-<code>POST /check</code> Check if port is open or closed on specific IP Address</summary>
+## Check Port Forward Validity
+<code>POST /check</code>Check if port is open or closed on specific IP Address
 
 #### Body
 ```json
@@ -35,8 +35,7 @@ docker run -d --name diglett -p 8080:8080 emokid327/diglett:latest
     }
 ```
 
-
-#### Responses
+#### Response
 
 | http code     | content-type                      | response                                                            |
 |---------------|-----------------------------------|---------------------------------------------------------------------|
@@ -50,6 +49,20 @@ docker run -d --name diglett -p 8080:8080 emokid327/diglett:latest
 curl -X POST -H "Content-Type: application/json" --data '{"address":"1.1.1.1", "port": "80"}' http://localhost:8080/check
 ```
 
+## Get Public IP Address
+<code>GET /ipv4</code>Retrieve client public IP address
 
+#### Body
+- no body **required**
+
+#### Response
+| http code     | content-type                      | response                                                            |
+|---------------|-----------------------------------|---------------------------------------------------------------------|
+| `200`         | `text/plain`                | `<client_public_ip>`                                             |
+
+#### Example cURL
+```shell
+curl http://localhost:8080/ipv4
+```
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/songlim)
