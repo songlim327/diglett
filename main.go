@@ -26,6 +26,7 @@ func main() {
 	r.Use(cors.Default())
 
 	r.POST("/check", checkPortHandler)
+	r.GET("/ipv4", getIpv4Handler)
 
 	r.Run()
 }
@@ -57,6 +58,11 @@ func checkPortHandler(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("port %v open on %v", record.Port, record.Address)})
 	}
+}
+
+// getIpv4Handler returns the public IPv4 address of the request
+func getIpv4Handler(c *gin.Context) {
+	c.String(http.StatusOK, "%v", c.ClientIP())
 }
 
 // tcpCheck run tcp port check and return if given port is open or closed
